@@ -92,12 +92,10 @@ function if_path_not_exist_then_exit() {
 
 # action
 function if_dir_not_exist_then_mkdir() {
-    if [ ! -e "$1" ]
-    then
-        mkdir -p "$1"
-        return $?
-    fi
+    [ -d "$1" ] || mkdir -p "$1"
+    return $?
 }
+
 
 function if_file_exist_then_remove() {
     if [ -e "$1" ]
@@ -116,4 +114,17 @@ function if_dir_exist_the_rmdir() {
 }
 
 
+#====================== dir  ======================
 
+function remkdir() {
+    if [ -e "$1" ]
+    then
+        rm -rf "$1"
+        if [ "$?" -ne 0 ]
+        then
+            return $?
+        fi
+    fi
+    mkdir -p "$1"
+    return $?
+}
