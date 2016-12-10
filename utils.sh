@@ -28,6 +28,40 @@ function log_error() {
     echo "${NOW} [ERROR] $1"
 }
 
+#====================== action ======================
+
+function do_exit_0() {
+    if [ ! -z "$1" ]
+    then
+        log_info "$1"
+    fi
+    exit 0
+}
+
+function do_exit_1() {
+    if [ ! -z "$1" ]
+    then
+        log_info "$1"
+    fi
+    exit 1
+}
+
+#====================== confirm======================
+# usage
+# x=$(confirm "do you want to continue?")
+# if [ "$x" = "yes" ]
+function confirm() {
+    QUESTION="$1"
+    read -p "${QUESTION} [yN] " ANSWER
+    if [[ "${ANSWER}" == "y" ]] || [[ "${ANSWER}" == "Y" ]]
+    then
+        echo "yes"
+    else
+        echo "no"
+    fi
+}
+
+
 #====================== if ======================
 
 #====================== if-then ======================
