@@ -2,8 +2,6 @@
 
 some utils for bash script.
 
-
-
 # usage
 
 
