@@ -6,8 +6,7 @@ some utils for bash script.
 
 
 ```bash
-curl https://raw.githubusercontent.com/wklken/bash-utils/master/utils.sh > utils.sh
-curl https://github.com/wklken/bash-utils/blob/master/template.sh > run.sh
+curl https://raw.githubusercontent.com/wklken/bash-utils/master/utils.sh > utils.sh && curl https://raw.githubusercontent.com/wklken/bash-utils/master/template.sh > run.sh
 ```
 
 # Donation
