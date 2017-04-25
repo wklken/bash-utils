@@ -77,7 +77,7 @@ function if_error_then_exit() {
 function if_empty_then_exit() {
     if [ -z "$1" ]
     then
-        error "$2"
+        log_error "$2"
         exit 1
     fi
 }
@@ -85,7 +85,7 @@ function if_empty_then_exit() {
 function if_path_not_exist_then_exit() {
     if [ ! -e "$1" ]
     then
-        error "$2"
+        log_error "$2"
         exit 1
     fi
 }
