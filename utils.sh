@@ -28,6 +28,11 @@ function log_error() {
     echo "${NOW} [ERROR] $1"
 }
 
+function log_exit() {
+    log_error "$1"
+    exit 1
+}
+
 #====================== action ======================
 
 function do_exit_0() {
@@ -91,6 +96,10 @@ function if_path_not_exist_then_exit() {
 }
 
 # action
+function if_file_not_exist_then_touch() {
+    [ -e "$1" ] || touch "$1"
+    return $?
+}
 function if_dir_not_exist_then_mkdir() {
     [ -d "$1" ] || mkdir -p "$1"
     return $?
