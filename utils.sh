@@ -131,9 +131,66 @@ function remkdir() {
         rm -rf "$1"
         if [ "$?" -ne 0 ]
         then
+            log_error "remkdir: fail, when do [rm -rf ${1}]"
             return $?
         fi
     fi
     mkdir -p "$1"
     return $?
+}
+
+#====================== dir  ======================
+
+# usage:
+# x=$(get_day_before_from_now 2)
+# echo $x
+# y=$(get_day_before_from 20170905 2)
+# echo $y
+
+function get_today() {
+    echo "$(date +%Y%m%d)"
+}
+
+function get_day_before_from_now() {
+    COUNT="$1"
+    TODAY=$(date +%Y%m%d)
+    echo $(date -d "$TODAY ${COUNT} days ago" +%Y%m%d)
+}
+
+function get_day_before_from() {
+    FROM="$1"
+    COUNT="$2"
+    echo $(date -d "${FROM} ${COUNT} days ago" +%Y%m%d)
+}
+
+# TODO: add function to gen date list
+
+
+#====================== tar ======================
+# usage: do_tar newrelic.tar.gz newrelic
+function do_tar() {
+    PKG_NAME="${1}"
+    DIR="${2}"
+    if_file_exist_then_remove "${PKG_NAME}"
+    tar -czf "${PKG_NAME}" "${DIR}"
+    if_error_then_exit "$?" "tar -czf ${PKG_NAME} ${DIR} fail"
+}
+
+#=============================== current
+
+# usage: A=$(if_empty_return_default "${1}" 123)
+function if_empty_return_default() {
+    if [ -z "${1}" ]
+    then
+        echo "${2}"
+    else
+        echo "${1}"
+    fi
+}
+
+function if_empty_then_log_warnning() {
+    if [ -z "${1}" ]
+    then
+        log_warnning "${2}"
+    fi
 }
