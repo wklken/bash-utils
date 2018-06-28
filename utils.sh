@@ -114,7 +114,7 @@ function if_file_exist_then_remove() {
     fi
 }
 
-function if_dir_exist_the_rmdir() {
+function if_dir_exist_then_rmdir() {
     if [ -e "$1" ]
     then
         rm -rf "$1"
