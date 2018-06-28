@@ -122,6 +122,13 @@ function if_dir_exist_then_rmdir() {
     fi
 }
 
+function if_file_or_dir_exist_then_move_to() {
+    if [ -e "$1" ]
+    then
+        mv "$1" "$2"
+        return $?
+    fi
+}
 
 #====================== dir  ======================
 
