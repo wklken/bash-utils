@@ -139,7 +139,7 @@ function remkdir() {
     return $?
 }
 
-#====================== dir  ======================
+#====================== datetime  ======================
 
 # usage:
 # x=$(get_day_before_from_now 2)
