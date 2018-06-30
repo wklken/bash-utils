@@ -167,6 +167,13 @@ if_dir_exist_the_remove() {
     fi
 }
 
+function if_file_or_dir_exist_then_move_to() {
+    if [ -e "$1" ]
+    then
+        mv "$1" "$2"
+        return $?
+    fi
+}
 
 #====================== dir  ======================
 
@@ -185,7 +192,7 @@ remkdir() {
     return $?
 }
 
-#====================== dir  ======================
+#====================== date ======================
 get_today() {
     # Usage: x=$(get_today)
     echo "$(date +%Y%m%d)"
