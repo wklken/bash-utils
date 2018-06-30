@@ -158,8 +158,8 @@ if_file_exist_then_remove() {
     fi
 }
 
-if_dir_exist_the_remove() {
-    # Usage: if_dir_exist_the_remove "/tmp/abc"
+if_dir_exist_then_remove() {
+    # Usage: if_dir_exist_then_remove "/tmp/abc"
     if [ -e "$1" ]
     then
         rm -rf "$1"
