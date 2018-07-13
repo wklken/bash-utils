@@ -183,6 +183,12 @@ function if_file_or_dir_exist_then_copy_to() {
     fi
 }
 
+#====================== is ======================
+
+is_command_exists () {
+    type "$1" &> /dev/null ;
+}
+
 #====================== dir  ======================
 
 remkdir() {
