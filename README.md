@@ -8,11 +8,11 @@ I always use the bash as my devops script, while it's boring to write the condit
 
 So, I want to make the bash script short and clear.
 
-I have collected some useful function into this repo, which save me a lot of time in past few years.
+I have collected some useful functions into this repo, which save me a lot of time in the past few years.
 
-Just source the `utils.sh` and write the expression calling the functions.
+Just source the `utils.sh` and write the code calling the functions.
 
-I can just focus on the logical, not the bash syntax and expression
+You can just focus on the logical, not the bash syntax and expression
 
 # example
 
