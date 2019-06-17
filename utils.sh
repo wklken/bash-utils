@@ -196,10 +196,11 @@ remkdir() {
     if [ -e "$1" ]
     then
         rm -rf "$1"
-        if [ "$?" -ne 0 ]
+        local rc=$?
+        if [ "$rc" -ne 0 ]
         then
             log_error "remkdir: fail, when do [rm -rf ${1}]"
-            return $?
+            return "$rc"
         fi
     fi
     mkdir -p "$1"
