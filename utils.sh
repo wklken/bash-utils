@@ -227,8 +227,15 @@ get_day_before_from() {
     echo $(date -d "${FROM} ${COUNT} days ago" +%Y%m%d)
 }
 
-# TODO: add to gen date list
-
+generate_date_list () {
+    # Usage: generate_date_list 20120304 20120405
+    TMP=$(date -d "$1" "+%Y%m%d")
+    TO=$(date -d "$2" "+%Y%m%d")
+    while [ "$(date -d $TO '+%s')" -ge "$(date -d $TMP '+%s')" ]; do
+        echo $TMP
+        TMP=$(date -d "$TMP 1day" "+%Y%m%d")
+    done
+}
 
 #====================== tar ======================
 do_tar() {
