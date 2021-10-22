@@ -175,6 +175,15 @@ function if_file_or_dir_exist_then_move_to() {
     fi
 }
 
+
+function copy_file_to_not_exist() {
+    if [ -f "$1" ] && [ -f "$2" ]
+    then
+        cp "$1" "$2"
+        return $?
+    fi
+}
+
 function if_file_or_dir_exist_then_copy_to() {
     if [ -e "$1" ]
     then
