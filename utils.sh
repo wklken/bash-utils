@@ -5,7 +5,7 @@
 
 echo_step() {
     # Usage: echo_step  "1. this is the step 1"
-    echo -e '\033[0;32m'"$1"'\033[0m'
+    echo -e '\033[0;32m'"$*"'\033[0m'
 }
 
 echo_separator() {
@@ -31,24 +31,24 @@ echo_in_processing_bar() {
 log_info() {
     # Usage: log_info "this is the info log message"
     NOW=$(date +"%Y-%m-%d %H:%M:%S")
-    echo "${NOW} [INFO] $1"
+    echo "${NOW} [INFO] $*"
 }
 
-log_warnning() {
-    # Usage: log_warnning "this is the warning log message"
+log_warn() {
+    # Usage: log_warn "this is the warning log message"
     NOW=$(date +"%Y-%m-%d %H:%M:%S")
-    echo "${NOW} [WARNNING] $1"
+    echo "${NOW} [WARN] $*"
 }
 
 log_error() {
     # Usage: log_error "this is the error log message"
     NOW=$(date +"%Y-%m-%d %H:%M:%S")
-    echo "${NOW} [ERROR] $1"
+    echo "${NOW} [ERROR] $*"
 }
 
 log_exit() {
     # Usage: log_exit "the log message before exit"
-    log_error "$1"
+    log_error "$*"
     exit 1
 }
 
@@ -58,7 +58,7 @@ do_exit_0() {
     # Usage: do_exit_0 "the log message before exit 0"
     if [ ! -z "$1" ]
     then
-        log_info "$1"
+        log_info "$*"
     fi
     exit 0
 }
@@ -67,7 +67,7 @@ do_exit_1() {
     # Usage: do_exit_0 "the log message before exit 1"
     if [ ! -z "$1" ]
     then
-        log_info "$1"
+        log_info "$*"
     fi
     exit 1
 }
@@ -119,11 +119,11 @@ if_empty_then_return_default() {
     fi
 }
 
-if_empty_then_log_warnning() {
-    # Usage: if_empty_then_log_warnning "$1" "the param 1 is empty"
+if_empty_then_log_warn() {
+    # Usage: if_empty_then_log_warn "$1" "the param 1 is empty"
     if [ -z "${1}" ]
     then
-        log_warnning "${2}"
+        log_warn "${2}"
     fi
 }
 
